@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Income index{% endblock %}
+{% block title %}Income{% endblock %}
 
 {% block body %}
-    <h1>Income index</h1>
+    <h1>Income</h1>
 
     <table class="table">
         <thead>
@@ -32,8 +32,18 @@
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
+         <tr><td><h4><font color="blue">TOTAL</font></h4></td></tr>
+        <tr>               
+        <td>{% set somme = 0 %}
+           {% set sumamount = 0 %}
+           {% for income in incomes %}
+           {% set somme = somme+ income.amount %}
+           {% endfor %}
+           <h4><font color="red">{{somme}}</font></h4>
+        </td>
+        </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('income_new') }}">Create new</a>
+    <a href="{{ path('income_new') }}"><button class="btn btn-lg btn-primary" type="submit" >Create new</button></a>
 {% endblock %}

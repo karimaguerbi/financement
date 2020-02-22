@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Expenses index{% endblock %}
+{% block title %}Expenses{% endblock %}
 
 {% block body %}
-    <h1>Expenses index</h1>
+    <h1>Expenses</h1>
 
     <table class="table">
         <thead>
@@ -14,6 +14,8 @@
                 <th>Amount</th>
                 <th>Take_at</th>
                 <th>actions</th>
+                
+                
             </tr>
         </thead>
         <tbody>
@@ -24,18 +26,38 @@
                 <td>{{ expense.reason }}</td>
                 <td>{{ expense.amount }}</td>
                 <td>{{ expense.takeAt ? expense.takeAt|date('Y-m-d H:i:s') : '' }}</td>
+  
                 <td>
                     <a href="{{ path('expenses_show', {'id': expense.id}) }}">show</a>
                     <a href="{{ path('expenses_edit', {'id': expense.id}) }}">edit</a>
                 </td>
+  
             </tr>
+            
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
+        <tr><td><h4><font color="blue">TOTAL</font></h4></td></tr>
+        <tr>               
+        <td>{% set somme = 0 %}
+           {% set sumamount = 0 %}
+           {% for expense in expenses %}
+           {% set somme = somme+ expense.amount %}
+           {% endfor %}
+           <h4><font color="red">{{somme}}</font></h4>
+        </td>
+        </tr>
         </tbody>
+        
     </table>
+     
+    <a href="{{ path('expenses_new') }}"><button class="btn btn-lg btn-primary" type="submit" >Create new</button></a>
 
-    <a href="{{ path('expenses_new') }}">Create new</a>
+
+
+
+
+
 {% endblock %}

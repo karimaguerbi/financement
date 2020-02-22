@@ -31,6 +31,12 @@ class Income
      */
     private $pay_at;
 
+    public function __construct()
+    {
+    $this->pay_at= new \DateTime('now');
+    }
+    
+
     public function getId(): ?int
     {
         return $this->id;

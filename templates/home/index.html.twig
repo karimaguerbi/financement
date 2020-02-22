@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Financement{% endblock %}
 
 {% block body %}
 <style>
@@ -11,6 +11,9 @@
 <div class="example-wrapper">
  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
  <h1>Hello  {{app.user.username}} ✅</h1>
+
+{{income.amount}}
+
   {% else %}
     <h1>Hello AbdelKarim ✅</h1>
 

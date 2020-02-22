@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Expenses
 {
+    
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -35,6 +36,12 @@ class Expenses
      * @ORM\Column(type="datetime")
      */
     private $take_at;
+
+    public function __construct()
+    {
+    $this->take_at= new \DateTime('now');
+    }
+    
 
     public function getId(): ?int
     {

@@ -6,6 +6,8 @@ use App\Entity\Income;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+
 
 class IncomeType extends AbstractType
 {
@@ -13,7 +15,7 @@ class IncomeType extends AbstractType
     {
         $builder
             ->add('source')
-            ->add('amount')
+            ->add('amount' ,MoneyType::class)
             ->add('pay_at')
         ;
     }
