@@ -47,4 +47,10 @@ class ExpensesRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getSumExpense() {
+        $q = $this->getEntityManager()->createQuery(
+                "SELECT SUM(e.amount) FROM  App:Expenses e"
+        );
+        return $q->getSingleScalarResult();
+    }
 }

@@ -47,4 +47,10 @@ class IncomeRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getSumIncome() {
+        $q = $this->getEntityManager()->createQuery(
+                "SELECT SUM(i.amount) FROM  App:Income i"
+        );
+        return $q->getSingleScalarResult();
+    }
 }
