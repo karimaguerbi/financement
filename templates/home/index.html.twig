@@ -13,11 +13,12 @@
  <h1>Hello  {{app.user.username}} ✅</h1>
 <h4><font color="#0000FF">La somme Expenses est :</font><font color="#800080"> {{ somme|number_format(3, ',', ' ')}} DT </font></h4><br>
 <h4><font color="#0000FF">La somme Income est : </font><font color="#FFA500">{{ total|number_format(3, ',', ' ')}} DT</font></h4><br>
-
- {% if total>somme%}
- <h4><font color="#0000FF"> it's OK L'Intervale est de :</font> <font color="#00FF00"> {{total}}-{{somme}}</font></h4>
+{% set r=0 %}
+ {% set r = total - somme %}
+  {% if total>somme%}
+  <h4><font color="#0000FF"> it's OK L'Intervale est de :</font> <font color="#00FF00"> {{r|number_format(3, ',', ' ')}}</font></h4>
   {% else %}
- <h4><font color="#0000FF"> is NOT OK L'Intervale est de :</font><font color="red"> {{total}}-{{somme}}</font></h4>
+ <h4><font color="#0000FF"> is NOT OK L'Intervale est de :</font><font color="red"> {{r|number_format(3, ',', ' ')}}</font></h4>
 {% endif %} 
   {% else %}
     <h1>Hello AbdelKarim ✅</h1>

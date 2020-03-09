@@ -19,7 +19,8 @@ class HomeController extends AbstractController
      */
 
     public function index(IncomeRepository $icomeRepository,ExpensesRepository $expenseRepository)
-    {$somme =  $expenseRepository->getSumExpense();
+    {
+         $somme =  $expenseRepository->getSumExpense();
          $total =  $icomeRepository->getSumIncome();
                return $this->render('home/index.html.twig', [
                 'somme'=>$somme,'total'=>$total
